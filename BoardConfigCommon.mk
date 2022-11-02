@@ -71,6 +71,12 @@ TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/xiaomi/sdm660
 TARGET_KERNEL_CLANG_COMPILE := true
 
+TARGET_KERNEL_CLANG_VERSION := proton
+TARGET_KERNEL_CLANG_PATH := $(shell pwd)/prebuilts/clang/host/linux-x86/clang-proton
+
+TARGET_KERNEL_ADDITIONAL_FLAGS := LD=ld.lld AR=llvm-ar NM=llvm-nm OBJCOPY=llvm-objcopy OBJDUMP=llvm-objdump STRIP=llvm-strip
+TARGET_KERNEL_ADDITIONAL_FLAGS += HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument"
+
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
 
